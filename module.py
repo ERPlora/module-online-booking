@@ -29,3 +29,15 @@ PERMISSIONS = [
     'online_booking.confirm_booking',
     'online_booking.manage_settings',
 ]
+
+ROLE_PERMISSIONS = {
+    "admin": ["*"],
+    "manager": [
+        "change_booking",
+        "confirm_booking",
+        "view_booking",
+    ],
+    "employee": [
+        "view_booking",
+    ],
+}
