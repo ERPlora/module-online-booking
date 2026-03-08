@@ -113,8 +113,14 @@ class BookingPageSettings(HubBaseModel):
         Get or create the settings singleton for a hub.
         Returns the BookingPageSettings instance.
         """
-        settings, _ = cls.objects.get_or_create(hub_id=hub_id)
-        return settings
+        try:
+            return cls.objects.get(hub_id=hub_id)
+        except cls.DoesNotExist:
+            from django.db import IntegrityError
+            try:
+                return cls.objects.create(hub_id=hub_id)
+            except IntegrityError:
+                return cls.objects.get(hub_id=hub_id)
 
 
 # ============================================================================
