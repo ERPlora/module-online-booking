@@ -7,6 +7,7 @@ MODULE_ICON = 'globe-outline'
 MODULE_DESCRIPTION = _('Public online appointment booking page for customers')
 MODULE_AUTHOR = 'ERPlora'
 MODULE_CATEGORY = 'services'
+HAS_MODELS = True
 
 MENU = {
     'label': _('Online Booking'),
